@@ -115,33 +115,39 @@ function App() {
     <div className="App">
       <Header />
       <div className="section">
-        {isLoading &&
-          <div className="lds-roller">
-            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-          </div>
-        }
-        {!isLoading &&
-          <div className="section2">
-            <div className="wallet">
-              <div className="wallet-top">
-                {formattedTokenBalance} FlorinCoins owned
+        {window.ethereum ?
+          <div>
+            {isLoading &&
+              <div className="lds-roller">
+                <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
               </div>
-              <div>
-                {amount} FlorinCoins staked
+            }
+            {!isLoading &&
+              <div className="section2">
+                <div className="wallet">
+                  <div className="wallet-top">
+                    {formattedTokenBalance} FlorinCoins owned
+                  </div>
+                  <div>
+                    {amount} FlorinCoins staked
+                  </div>
+                </div>
+                <div className="mine"><button onClick={mineTokens}>Mine 1 Flo Token</button></div>
+                <div className="inner-section">
+                  <div>
+                    <form onSubmit={stakeTokens.bind(this)} id="form">
+                      <input type="number" name="stakeAmount"></input>
+                      <button type="submit">Stake Tokens</button>
+                    </form>
+                  </div>
+                  <div><button onClick={getTokens}>Get Tokens</button></div>
+                </div>
               </div>
-            </div>
-            <div className="mine"><button onClick={mineTokens}>Mine 1 Flo Token</button></div>
-            <div className="inner-section">
-              <div>
-                <form onSubmit={stakeTokens.bind(this)} id="form">
-                  <input type="number" name="stakeAmount"></input>
-                  <button type="submit">Stake Tokens</button>
-                </form>
-              </div>
-              <div><button onClick={getTokens}>Get Tokens</button></div>
-            </div>
-          </div>
-        }
+            }
+          </div> : <div style={{ textAlign: "center", marginBottom: "20px" }}>
+            <div style={{ marginBottom: "20px" }}>You need a wallet to use this app. Download for example <a target="__none" href="https://metamask.io/">https://metamask.io/</a></div>
+            <div>Get free eth for rinkeby at <a target="__none" href="https://faucets.chain.link/rinkeby">https://faucets.chain.link/rinkeby</a></div>
+          </div>}
       </div>
     </div>
   );
