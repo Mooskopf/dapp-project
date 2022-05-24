@@ -80,6 +80,7 @@ function App() {
       setIsLoading(true)
       sendStakeTokens(utils.parseEther(stakeAmount.toString()).toString())
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stateApprove])
 
   useEffect(() => {
