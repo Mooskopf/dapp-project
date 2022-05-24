@@ -74,10 +74,10 @@ function App() {
   }
 
   useEffect(() => {
-    if (stateApprove === "Mining") {
-      setIsLoading(false)
-    } else if (stateApprove.status === "Success") {
+    if (stateApprove.status === "Mining") {
       setIsLoading(true)
+    } else if (stateApprove.status === "Success") {
+      setIsLoading(false)
       sendStakeTokens(utils.parseEther(stakeAmount.toString()).toString())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
