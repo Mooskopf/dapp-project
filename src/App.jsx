@@ -45,7 +45,7 @@ function App() {
     const inputData = e.target.stakeAmount.value
     if (inputData <= 0) {
       alert("Amount must be positive!")
-    } else if (inputData >= formattedTokenBalance) {
+    } else if (inputData > formattedTokenBalance) {
       alert("Amount is bigger then balance. Please check!")
     } else {
       setStakeAmount(inputData)
