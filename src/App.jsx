@@ -34,7 +34,7 @@ function App() {
   const { state: stateGetTokens, send: sendGetTokens } = useContractFunction(tokenSaverContract, 'getAllTokens', { transactionName: 'Getting FloToken' })
 
   const [stakeAmount, setStakeAmount] = useState(0)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   function mineTokens() {
     sendFloTokenMint()
